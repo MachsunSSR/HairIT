@@ -3,13 +3,11 @@ import {NavigationContainer, DefaultTheme} from '@react-navigation/native'
 
 import {useFonts} from 'expo-font'
 
-import Home from './src/screens/Home'
-import Search from './src/screens/Search'
-import History from './src/screens/History'
-import Profile from './src/screens/Profile'
+import TabNavigator from './src/navigation/TabNavigator'
 
 import {TailwindProvider} from 'tailwind-rn';
 import utilities from './tailwind.json';
+import SplashScreen from './src/screens/SplashScreen';
 
 const Stack = createStackNavigator()
 
@@ -48,11 +46,9 @@ const App = () => {
   return (
     <TailwindProvider utilities={utilities}>
       <NavigationContainer theme={theme}>
-        <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName='Home'>
-          <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name="Search" component={Search} />
-          <Stack.Screen name="History" component={History} />
-          <Stack.Screen name="Profile" component={Profile} />
+        <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName='SplashScreen'>
+          <Stack.Screen name="SplashScreen" component={SplashScreen} />
+          <Stack.Screen name="Home" component={TabNavigator} />
         </Stack.Navigator>
       </NavigationContainer>
     </TailwindProvider>

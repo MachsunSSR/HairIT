@@ -1,9 +1,11 @@
 import React from 'react'
-import { Text } from 'react-native'
+import { Text, SafeAreaView } from 'react-native'
 
 const History = () => {
   return (
-    <Text>History</Text>
+    <SafeAreaView>
+      <Text>History</Text>
+    </SafeAreaView>
   )
 }
 
