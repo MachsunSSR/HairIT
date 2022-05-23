@@ -1,7 +1,7 @@
 @extends('dashboard.polluxui.partials.master')
 
 @section('title')
-    Store Product by Category
+    layanan by Category
 @endsection
 
 @section('content')

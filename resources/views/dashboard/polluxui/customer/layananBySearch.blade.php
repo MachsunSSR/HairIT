@@ -74,7 +74,7 @@
     </div>
     <div class="card mt-5">
         <div class="row px-3 py-3">
-            @forelse ($products as $item)
+            @forelse ($layanan as $item)
                 <div class="col-4">
                     <div class="card my-3" style="width: 18rem;">
                         <img class="card-img-top" src="{{ asset('images/' . $item->picture) }}" alt="Card image cap"
@@ -109,7 +109,7 @@
         //make funtion on button with search document by id "search" then go to link 
         const searchProduct = () => {
             let search = document.getElementById('search').value;
-            window.location.href = `/search-products=${search}`;
+            window.location.href = `/search-layanans=${search}`;
         }
     </script>
 @endsection

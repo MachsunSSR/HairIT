@@ -109,7 +109,7 @@
         //make funtion on button with search document by id "search" then go to link 
         const searchProduct = () => {
             let search = document.getElementById('search').value;
-            window.location.href = `/search-products=${search}`;
+            window.location.href = `/search-layanans=${search}`;
         }
     </script>
 @endsection

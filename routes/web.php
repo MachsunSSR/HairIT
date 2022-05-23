@@ -49,7 +49,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     //Customer
     Route::get('/layanans', [CustomerController::class, 'index']);
-    Route::get('/search-products={product_name}', [ProductController::class, 'search']);
+    Route::get('/search-layanans={layanan_name}', [LayananController::class, 'search']);
     Route::get('/layanan/category/{category_id}', [CategoryController::class, 'showProductByCategory']);
     Route::get('/myorders', [CustomerController::class, 'order_index']);
 

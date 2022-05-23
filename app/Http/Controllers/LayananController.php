@@ -133,25 +133,25 @@ class LayananController extends Controller
 
     public function destroy(Request $request, $id)
     {
-        $product = Product::findOrFail($id);
+        $product = Layanan::findOrFail($id);
 
         $path = "/images";
         File::delete($path, $request->picture);
         $product->delete();
 
-        return redirect('product');
+        return redirect('layanan');
     }
 
-    public function search(Request $request, $product_name)
+    public function search(Request $request, $layanan_name)
     {
         $search = $request->get('search');
-        $products = Layanan::where('name', 'LIKE', '%'.$product_name.'%')->get();
+        $layanan = Layanan::where('name', 'LIKE', '%'.$layanan_name.'%')->get();
 
         $carts = Cart::where('user_id', auth()->user()->id)
             ->join('cart_items', 'carts.id', '=', 'cart_items.cart_id')
-            ->join('products', 'cart_items.product_id', '=', 'products.id')
+            ->join('layanan', 'cart_items.layanan_id', '=', 'layanan.id')
             ->get();
 
-        return view('dashboard.polluxui.customer.productsBySearch', compact('products', 'carts'));
+        return view('dashboard.polluxui.customer.layananBySearch', compact('layanan', 'carts'));
     }
 }
