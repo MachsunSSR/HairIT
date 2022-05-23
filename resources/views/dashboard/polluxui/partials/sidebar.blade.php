@@ -1,7 +1,7 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
         <li class="nav-item">
-            <a class="nav-link" href="/layanan">
+            <a class="nav-link" href="/layanans">
                 <i class="typcn typcn-shopping-bag menu-icon"></i>
                 <span class="menu-title">Layanan</span>
             </a>

@@ -72,6 +72,7 @@
             </div>
         </div>
     </div>
+    
     <div class="card mt-5">
         <div class="row px-3 py-3">
             @forelse ($products as $item)
@@ -82,10 +83,9 @@
                         <div class="card-body">
                             <div class="d-flex row justify-content-between">
                                 <p class="card-title">{{ $item->name }}</p>
-                                <p class="card-title text-primary">Rp. {{ $item->price }}</p>
                             </div>
-                            <div class="d-flex row justify-content-between align-items-center mb-2">
-                                <p class="card-text">Available: {{ $item->stock }}</p>
+                            <div class="d-flex row justify-content-between align-items-center mb-1">
+                               <p class="card-title">{{ $item->description }}</p>
                             </div>
                             <div class="d-flex">
                                 <form action="/add-to-cart/{{ Auth::user()->id }}/{{ $item->id }}" method="post">

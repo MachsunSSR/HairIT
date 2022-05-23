@@ -64,14 +64,14 @@ class LayananController extends Controller
 
     public function edit($id){
         $category = Category::all();
-        $product = Layanan::findorfail($id);
+        $layanan = Layanan::findorfail($id);
 
-        return view('dashboard.polluxui.admin.edit-product', compact('product', 'category'));
+        return view('dashboard.polluxui.admin.edit-product', compact('layanan', 'category'));
     }
 
     public function show($id){
         $layanan = Layanan::findOrFail($id);
-        return view('dashboard.layanan.show', compact('product'));
+        return view('dashboard.product.show', compact('layanan'));
     }
 
     public function update(Request $request, $id){
@@ -128,7 +128,7 @@ class LayananController extends Controller
             }
         $product->update($product_data);
 
-        return redirect('/product');
+        return redirect('/layanan');
     }
 
     public function destroy(Request $request, $id)

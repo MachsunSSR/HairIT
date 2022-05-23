@@ -7,7 +7,7 @@ Edit Layanan
 @section('content')
 @if (Auth::user()->role == 'admin')
 <br>
-<h3>Edit Product</h3>
+<h3>Edit Layanan</h3>
 <br>
 <div class="card mb-4">
     <div class="formcreate m-5">
@@ -15,8 +15,8 @@ Edit Layanan
             @csrf
             @method('PUT')
             <div class="mb-3">
-                <label>Nama Produk</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" value="{{ $product->name }}" name="name">
+                <label>Nama Layanan</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" value="{{ $layanan->name }}" name="name">
             </div>
             @error('name')
             <div class="alert alert-danger">{{ $message }}</div>
@@ -27,7 +27,7 @@ Edit Layanan
                 <select name="category_id">
                     <option disabled>-- Pilih Kategori Produk --</option>
                     @foreach ($category as $item)
-                    @if ($item->id === $product->category_id)
+                    @if ($item->id === $layanan->category_id)
                         <option value="{{ $item->id }}" selected>{{ $item->name }}</option>
                     @else 
                     <option value="{{ $item->id }}">{{ $item->name }}</option>
@@ -40,28 +40,28 @@ Edit Layanan
             @enderror
             <div class="mb-3">
                 <label>Stock</label>
-                <input type="number" class="form-control" value="{{ $product->stock }}" id="exampleInputPassword1" name="stock">
+                <input type="number" class="form-control" value="{{ $layanan->stock }}" id="exampleInputPassword1" name="stock">
             </div>
             @error('stock')
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
             <div class="mb-3">
-                <label>Deskripsi Produk</label>
-                <input type="text" class="form-control" value="{{ $product->description }}" id="exampleInputPassword1" name="description">
+                <label>Deskripsi Layanan</label>
+                <input type="text" class="form-control" value="{{ $layanan->description }}" id="exampleInputPassword1" name="description">
             </div>
             @error('description')
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
             <div class="mb-3">
                 <label>Gambar Produk</label>
-                <input type="file" class="form-control" id="exampleInputPassword1" name="picture" value="{{ $product->picture }}">
+                <input type="file" class="form-control" id="exampleInputPassword1" name="picture" value="{{ $layanan->picture }}">
             </div>
             @error('picture')
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
             <div class="mb-3">
-                <label>Harga Produk</label>
-                <input type="number" class="form-control" value="{{ $product->price }}" name="price">
+                <label>Harga layanan</label>
+                <input type="number" class="form-control" value="{{ $layanan->price }}" name="price">
             </div>
             @error('price')
             <div class="alert alert-danger">{{ $message }}</div>
@@ -83,7 +83,7 @@ Edit Layanan
                     </div>
                     <div class="row mt-5">
                         <div class="col-12 text-center mt-xl-2">
-                            <a class="text-white font-weight-medium" href="{{ url('product') }}">Back to home</a>
+                            <a class="text-white font-weight-medium" href="{{ url('layanan') }}">Back to home</a>
                         </div>
                     </div>
                 </div>
