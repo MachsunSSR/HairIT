@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Cart;
 use App\Models\CartItem;
+use App\Models\Layanan;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\ProductOrder;
@@ -22,7 +23,7 @@ class OrderController extends Controller
 
         $carts = Cart::where('user_id', auth()->user()->id)
             ->join('cart_items', 'carts.id', '=', 'cart_items.cart_id')
-            ->join('products', 'cart_items.product_id', '=', 'products.id')
+            ->join('layanan', 'cart_items.layanan_id', '=', 'layanan.id')
             ->get();
         
         $total = 0;
@@ -54,7 +55,7 @@ class OrderController extends Controller
     {
         $carts = Cart::where('user_id', auth()->user()->id)
             ->join('cart_items', 'carts.id', '=', 'cart_items.cart_id')
-            ->join('products', 'cart_items.product_id', '=', 'products.id')
+            ->join('layanan', 'cart_items.layanan_id', '=', 'layanan.id')
             ->get();
 
         $total = 0;
@@ -63,19 +64,20 @@ class OrderController extends Controller
         }
 
         $order = Order::create([
-            'order_address' => $request->order_address,
+            'order_address' => null,
+            // $request->order_address,
             'total_price' => $total
         ]);
         
         foreach ($carts as $cart) {
             ProductOrder::create([
                 'order_id' => $order->id,
-                'product_id' => $cart->product_id,
+                'layanan_id' => $cart->layanan_id,
                 'amount' => $cart->quantity
             ]);
 
-            Product::where('id', $cart->product_id)
-                ->decrement('stock', $cart->quantity);
+            Layanan::where('id', $cart->layanan_id)
+                ->decrement('kuota', $cart->quantity);
         }
 
         UserOrder::create([

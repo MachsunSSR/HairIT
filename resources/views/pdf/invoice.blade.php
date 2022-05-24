@@ -63,7 +63,7 @@
             <td>Quantity</td>
             <td>Total</td>
         </tr>
-        @foreach ($products as $key => $item)
+        @foreach ($layanan as $key => $item)
             <tr>
                 <td>{{ $key + 1 }}</td>
                 <td>{{ $item['name'] }}</td>

@@ -74,7 +74,6 @@ class CategoryController extends Controller
     {
 
         $categories = Category::all();
-
         $category = Category::find($id);
         return view('dashboard.polluxui.admin.edit-category', compact('category', 'categories'));
     }
@@ -118,12 +117,12 @@ class CategoryController extends Controller
 
     public function showProductByCategory($category_id)
     {
-        $products = Category::find($category_id)->products;
+        $products = Category::find($category_id)->layanan;
 
         // dd($products);
         $carts = Cart::where('user_id', auth()->user()->id)
             ->join('cart_items', 'carts.id', '=', 'cart_items.cart_id')
-            ->join('products', 'cart_items.product_id', '=', 'products.id')
+            ->join('layanan', 'cart_items.layanan_id', '=', 'layanan.id')
             ->get();
 
         return view('dashboard.polluxui.customer.productsByCategory', compact('products', 'carts'));

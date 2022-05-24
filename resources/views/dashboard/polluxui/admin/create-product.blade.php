@@ -7,11 +7,11 @@ Create Product
 @section('content')
 @if (Auth::user()->role == 'admin')
 <br>
-<h3>Insert Product</h3>
+<h3>Insert Layanan</h3>
 <br>
 <div class="card mb-4">
     <div class="formcreate m-5">
-        <form action="{{ url('product') }}" enctype="multipart/form-data" method="POST">
+        <form action="{{ url('layanan') }}" enctype="multipart/form-data" method="POST">
             @csrf
             <div class="mb-3">
                 <label>Nama Produk</label>
@@ -78,7 +78,7 @@ Create Product
                     </div>
                     <div class="row mt-5">
                         <div class="col-12 text-center mt-xl-2">
-                            <a class="text-white font-weight-medium" href="{{ url('product') }}">Back to home</a>
+                            <a class="text-white font-weight-medium" href="{{ url('layanans') }}">Back to home</a>
                         </div>
                     </div>
                 </div>

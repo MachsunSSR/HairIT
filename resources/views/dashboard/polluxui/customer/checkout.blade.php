@@ -121,7 +121,7 @@
             <form action="/order" method="post" class="mt-2 px-5 py-3">
                 @csrf
                 @method('post')
-                <div class="row">
+                <!-- <div class="row">
                     <div class="form-group col-12">
                         <div class="col-sm">
                             <label class="form-label"><h5>Order Address To :</h5> </label>
@@ -130,7 +130,7 @@
                             <input type="text" class="form-control" name="order_address" placeholder="Your Home Address" required>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <div class="row mt-4">
                     <button class="btn btn-info btn-lg btn-block">

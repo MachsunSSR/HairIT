@@ -18,8 +18,8 @@ class CreateOrdersTable extends Migration
             $table->string('order_address')->nullable();
             $table->timestamp('order_date');
             $table->BigInteger('total_price');
-            $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->default(DB::raw('NULL ON UPDATE CURRENT_TIMESTAMP'))->nullable();
+            // $table->timestamp('created_at')->useCurrent();
+            // $table->timestamp('updated_at')->default(DB::raw('NULL ON UPDATE CURRENT_TIMESTAMP'))->nullable();
         });
     }
 

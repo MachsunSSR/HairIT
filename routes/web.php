@@ -27,14 +27,14 @@ Route::get('/', function () {
 
 Route::group(['middleware' => ['auth']], function () {
 
-    //CRUD Category
+    //CRUD Category ( done )
     Route::get('/category', [CategoryController::class, 'index']);
     Route::post('/category', [CategoryController::class, 'store']);
     Route::delete('/category/{id}', [CategoryController::class, 'destroy']);
     Route::get('/category/{id}/edit', [CategoryController::class, 'edit']);
     Route::patch('/category/{id}', [CategoryController::class, 'update']);
 
-    //CRUD Product
+    //CRUD Product ( done )
     Route::get('layanan', [LayananController::class, 'index']);
     Route::get('layanan/create', [LayananController::class, 'create']);
     Route::post('layanan', [LayananController::class, 'store']);
@@ -43,7 +43,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('layanan/{layanan_id}/show', [LayananController::class, 'show']);
     Route::resource('layanan', LayananController::class);
 
-    //CRUD Profile
+    //CRUD Profile ( done )
     Route::get('/profile/{id}/show', [ProfileController::class, 'index']);
     Route::patch('/profile/{id}', [ProfileController::class, 'update']);
 
@@ -53,13 +53,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/layanan/category/{category_id}', [CategoryController::class, 'showProductByCategory']);
     Route::get('/myorders', [CustomerController::class, 'order_index']);
 
-    //Cart
-    Route::post('/add-to-cart/{user_id}/{product_id}', [CartController::class, 'addToCart']);
+    //Cart ( done )
+    Route::post('/add-to-cart/{user_id}/{layanan_id}', [CartController::class, 'addToCart']);
     Route::post('/subtract-quntity/{user_id}/{product_id}', [CartController::class, 'subtractCartItemQuantity']);
     Route::post('/add-quntity/{user_id}/{product_id}', [CartController::class, 'addCartItemQuantity']);
 
     //Order
     Route::get('/checkout', [OrderController::class, 'index']);
+    Route::get('/order', [OrderController::class, 'store']);
     Route::post('/order', [OrderController::class, 'store']);
 
     //Admin register

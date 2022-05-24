@@ -29,7 +29,7 @@ class CustomerController extends Controller
 
         $carts = Cart::where('user_id', auth()->user()->id)
             ->join('cart_items', 'carts.id', '=', 'cart_items.cart_id')
-            ->join('products', 'cart_items.product_id', '=', 'products.id')
+            ->join('layanan', 'cart_items.layanan_id', '=', 'layanan.id')
             ->get();
 
         $userorders = UserOrder::where('user_id', auth()->user()->id)->get();
@@ -39,7 +39,7 @@ class CustomerController extends Controller
 
         foreach ($userorders as $key => $order) {
             $productOrders = ProductOrder::where('order_id', $order->order_id)
-            ->join('products', 'product_orders.product_id', '=', 'products.id')
+            ->join('layanan', 'product_orders.layanan_id', '=', 'layanan.id')
             ->get();
 
             $orders = Order::where('id', $order->order_id)->get();
