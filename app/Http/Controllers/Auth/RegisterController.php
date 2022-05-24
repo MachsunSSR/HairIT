@@ -73,6 +73,7 @@ class RegisterController extends Controller
             'jenis_kelamin' => null,
             'Tanggal_lahir' => null,
             'nomer_telefon' => null,
+            'alamat' => null,
         ]);
         return $user;
     }

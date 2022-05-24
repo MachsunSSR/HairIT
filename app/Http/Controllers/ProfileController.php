@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Profile;
 use App\Models\User;
 
 class ProfileController extends Controller
@@ -28,6 +27,7 @@ class ProfileController extends Controller
             'Tanggal_lahir' => $request->dob,
             'name' => $request->name,
             'email' => $request->email,
+            'alamat' => $request->alamat,
         ]);
         $user->save();
 

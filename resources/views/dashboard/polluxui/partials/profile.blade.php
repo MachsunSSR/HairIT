@@ -33,6 +33,11 @@
                                 value="{{ $user->jenis_kelamin }}" name="jenis_kelamin">
                         </div>
                         <div class="col-md-12">
+                            <label class="labels">alamat</label>
+                            <input type="text" class="form-control" placeholder="Alamat"
+                                value="{{ $user->alamat }}" name="alamat">
+                        </div>
+                        <div class="col-md-12">
                             <label class="labels">Email</label>
                             <input type="text" class="form-control" placeholder="Email"
                                 value="{{ $user->email }}" name="email">
