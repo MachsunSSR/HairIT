@@ -62,11 +62,11 @@ class CartController extends Controller
         return redirect()->back();
     }
 
-    public function addCartItemQuantity(Request $request, $user_id, $product_id)
+    public function addCartItemQuantity(Request $request, $user_id, $layanan_id)
     {
         $cart = Cart::where('user_id', $user_id)->first();
         if ($cart) {
-            $cartItem = CartItem::where('cart_id', $cart->id)->where('product_id', $product_id)->first();
+            $cartItem = CartItem::where('cart_id', $cart->id)->where('layanan_id', $layanan_id)->first();
             if ($cartItem) {
                 $cartItem->quantity += 1;
                 $cart->total_product += 1;

@@ -80,28 +80,58 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th class="text-center">No</th>
-                        <th>Picture</th>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th class="text-center">Quantity</th>
-                        <th class="text-center">Total</th>
+                        <th class="text-center">Name</th>
+                        <th class="text-center">harga</th>
+                        <th class="text-center">Guest</th>     
+                        <th class="text-center">Hari</th>
+                        <th class="text-center">Jam</th>
+                        <th class="text-center">Metode Pembayaran</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse ($carts as $key => $item)
-                        <tr>
-                            <td class="text-center">{{ $key + 1 }}</td>
-                            <td>
+                        <!-- <tr>
+                            <td class="text-center">{{ $key + 1 }}</td> -->
+                            <!-- <td>
                                 <img src="{{ asset('images/' . $item->picture) }}"
                                     style="width: 235px; height: 150px; object-fit: cover; border-radius: 0%;"
                                     alt="{{ $item->name }}">
+                            </td> -->
+                            <td class="text-center">{{ $item->name }}</td>
+                            <td class="text-center">Rp.{{ $item->price }}</td>
+                            <td class="text-center"><div
+                                    class="row font-weight-light small-text mb-0 text-muted align-items-center justify-content-around">
+                                    <form action="/add-quntity/{{ Auth::user()->id }}/{{ $item->id }}" method="post">
+                                        @csrf
+                                        @method('post')
+
+                                        <button type="submit" class="btn btn-icon">
+                                            <i class="typcn typcn-plus"></i>
+                                        </button>
+                                    </form>
+                                    <h5 class="mb-0">{{ $item->quantity }}</h5>
+                                    <form action="/subtract-quntity/{{ Auth::user()->id }}/{{ $item->id }}"
+                                        method="post">
+                                        @csrf
+                                        @method('post')
+
+                                        <button type="submit" class="btn btn-icon">
+                                            <i class="typcn typcn-minus"></i>
+                                        </button>
+                                    </form>
+                                </div></td>
+                            <td class="text-center">
+                            <input type="Date" class="form-control" id="exampleInputPassword1" name="timeClose"></td>
+                            <td class="text-center">
+                            <input type="Time" class="form-control" id="exampleInputPassword1" name="timeClose"></td>
+                            
+                            <td class="text-right px-5"> <select>
+                                <option value="pil1">BCA</option>
+                                <option value="pil2">BRI</option>
+                                <option value="pil3">BNI</option>
+                            </select>
+                                <!-- <b class="card-title">Rp.{{ $item->price * $item->quantity }}</b> -->
                             </td>
-                            <td>{{ $item->name }}</td>
-                            <td>Rp.{{ $item->price }}</td>
-                            <td class="text-center">{{ $item->quantity }}</td>
-                            <td class="text-right px-5"><b
-                                    class="card-title">Rp.{{ $item->price * $item->quantity }}</b></td>
                         </tr>
                     @empty
                         <tr>

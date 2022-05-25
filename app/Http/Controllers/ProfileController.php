@@ -60,7 +60,7 @@ class ProfileController extends Controller
         //     'alamat' => $request->alamat,
         //     'foto' => $fileName,
         // ]);
-        $user->save($users);
+        $user->update($users);
 
         return redirect()->back()->with('success', 'Profile updated successfully');
     }
