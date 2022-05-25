@@ -27,7 +27,10 @@ class LayananController extends Controller
             'description' => 'required',
             'picture' => 'required',
             'price' => 'required',
-            'category_id' => 'required'
+            'category_id' => 'required',
+            'alamat' => 'required',
+            // 'Open_toko' => 'required',
+            // 'Close_toko' => 'required'
         ],
         [
             'name.required' => 'Harap Masukkan Nama Produk',
@@ -36,19 +39,24 @@ class LayananController extends Controller
             'picture.required' => 'Harap Masukkan Foto Produk',
             'price.required' => 'Harap Masukkan Harga Produk',
             'category_id.required' => 'Harap Masukkan Kategori Produk',
+            'alamat.required' => 'harap masukan alamat',
+            // 'Open_toko.required' => 'harap masukan jam toko buka',
+            // 'Close_toko.required' => 'harap masukan jam toko tutup'
         ]
     );
 
         $fileName = time().'.'.$request->picture->extension();
 
         $category = new Layanan;
-
         $category->name = $request->name;
         $category->kuota = $request->stock;
         $category->description = $request->description;
         $category->picture = $fileName;
         $category->price = $request->price;
         $category->category_id = $request->category_id;
+        $category->alamat = $request->alamat;
+        $category->Open_toko = $request->timeOpen;
+        $category->Close_toko = $request->timeClose;
 
         $category->save();
         $request->picture->move(public_path('images'), $fileName);
@@ -75,13 +83,15 @@ class LayananController extends Controller
     }
 
     public function update(Request $request, $id){
+        
         $request->validate([
             'name' => 'required',
             'stock' => 'required',
             'description' => 'required',
             'picture' => 'required',
             'price' => 'required',
-            'category_id' => 'required'
+            'category_id' => 'required',
+            'alamat' => 'required',
         ],
         [
             'name.required' => 'Harap Masukkan Nama Produk',
@@ -90,6 +100,7 @@ class LayananController extends Controller
             'picture.required' => 'Harap Masukkan Foto Produk',
             'price.required' => 'Harap Masukkan Harga Produk',
             'category_id.required' => 'Harap Masukkan Kategori Produk',
+            'alamat.required' => 'harap masukan alamat',
         ]
     );
 
@@ -107,11 +118,14 @@ class LayananController extends Controller
             $product_data = 
             [
                 'name' =>$request->name,
-                'stock' =>$request->stock,
+                'stock' =>$request->kuota,
                 'description' =>$request->description,
                 'picture' =>$fileName,
                 'price' =>$request->price,
-                'category_id' =>$request->category_id
+                'category_id' =>$request->category_id,
+                'alamat' => $request->alamat,
+                'Open_toko' => $request->timeOpen,
+                'Close_toko' => $request->timeClose
             ];
 
         }else
@@ -123,7 +137,10 @@ class LayananController extends Controller
                     'description' =>$request->description,
                     'picture' =>$request->picture,
                     'price' =>$fileName,
-                    'category_id' =>$request->category_id
+                    'category_id' =>$request->category_id,
+                    'alamat' => $request->alamat,
+                    'Open_toko' => $request->timeOpen,
+                    'Close_toko' => $request->timeClose
                 ];
             }
         $product->update($product_data);

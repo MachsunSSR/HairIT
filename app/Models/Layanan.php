@@ -17,7 +17,11 @@ class Layanan extends Model
         'description', 
         'price', 
         'picture', 
-        'category_id'
+        'category_id',
+        'alamat',
+        'Open_toko',
+        'Close_toko',
+        'review'
     ];
 
     public function category()

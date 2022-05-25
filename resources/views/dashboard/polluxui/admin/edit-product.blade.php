@@ -39,7 +39,7 @@ Edit Layanan
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
             <div class="mb-3">
-                <label>Stock</label>
+                <label>kuota</label>
                 <input type="number" class="form-control" value="{{ $layanan->stock }}" id="exampleInputPassword1" name="stock">
             </div>
             @error('stock')
@@ -53,10 +53,31 @@ Edit Layanan
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
             <div class="mb-3">
-                <label>Gambar Produk</label>
+                <label>Gambar layanan</label>
                 <input type="file" class="form-control" id="exampleInputPassword1" name="picture" value="{{ $layanan->picture }}">
             </div>
             @error('picture')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+            <div class="mb-3">
+                <label>Alamat Salon</label>
+                <input type="text" class="form-control" id="exampleInputPassword1" name="alamat">
+            </div>
+            @error('alamat')
+            <div class="alert alert-danger">{{ $message }}</div>    
+            @enderror
+             <div class="mb-3">
+                <label>Jam Buka</label>
+                <input type="time" class="form-control" id="exampleInputPassword1" name="timeOpen">
+            </div>
+             @error('Open_toko')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+             <div class="mb-3">
+                <label>Jam Tutup</label>
+                <input type="time" class="form-control" id="exampleInputPassword1" name="timeClose">
+            </div>
+            @error('Close_toko')
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
             <div class="mb-3">

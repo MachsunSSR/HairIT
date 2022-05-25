@@ -47,6 +47,10 @@
                             <input type="date" class="form-control" placeholder="Date of Birth"
                                 value="{{ $user->dob }}" name="dob">
                         </div>
+                        <div class="col-md-12">
+                            <label class="labels">Profile</label>
+                            <input type="file" class="form-control" value="{{ $user->foto }}" name="picture">
+                        </div>
                         <button type="submit" class="ml-2 mt-3 btn btn-primary profile-button">Update Profile</button>
                     </form>
                 </div>

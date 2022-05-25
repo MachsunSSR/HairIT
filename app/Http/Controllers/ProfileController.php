@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use File;
 
 class ProfileController extends Controller
 {
@@ -17,19 +18,49 @@ class ProfileController extends Controller
 
     public function update(Request $request, $id)
     {
-        // $profile = Profile::find($id);
-        $user = User::find($id);
 
-        $user->update([
-            // 'address' => $request->address,
+    $user = User::findOrFail($id);
+
+    if($request->has('foto'))
+        {
+            $path = "images/";
+            File::delete($path . $user->foto);
+
+            $fileName = time().'.'.$request->foto->extension();
+            $request->foto->move(public_path('images'), $fileName);
+
+        $users = [
             'nomer_telefon' => $request->phone,
             'jenis_kelamin' => $request->jenis_kelamin,
             'Tanggal_lahir' => $request->dob,
             'name' => $request->name,
             'email' => $request->email,
             'alamat' => $request->alamat,
-        ]);
-        $user->save();
+            'foto' => $fileName,
+        ];
+    }else{
+        $users = [
+            'nomer_telefon' => $request->phone,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'Tanggal_lahir' => $request->dob,
+            'name' => $request->name,
+            'email' => $request->email,
+            'alamat' => $request->alamat,
+            'foto' => $request->foto,
+        ];
+    }
+
+        // $user->update([
+        //     // 'address' => $request->address,
+        //     'nomer_telefon' => $request->phone,
+        //     'jenis_kelamin' => $request->jenis_kelamin,
+        //     'Tanggal_lahir' => $request->dob,
+        //     'name' => $request->name,
+        //     'email' => $request->email,
+        //     'alamat' => $request->alamat,
+        //     'foto' => $fileName,
+        // ]);
+        $user->save($users);
 
         return redirect()->back()->with('success', 'Profile updated successfully');
     }

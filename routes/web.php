@@ -63,12 +63,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/order', [OrderController::class, 'store']);
     Route::post('/order', [OrderController::class, 'store']);
 
-    //Admin register
-    // Route::post('admin/register', [RegisterAdminController::class, 'validation']);
+    
 
     //PDF
     Route::get('/download-invoice/{order_id}', [PDFController::class, 'generatePDF']);
 });
+
+// Admin register
+    // Route::post('admin/register', [RegisterAdminController::class, 'validation']);
 
 Auth::routes();
 

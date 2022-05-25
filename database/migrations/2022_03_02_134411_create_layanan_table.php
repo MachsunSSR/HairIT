@@ -16,10 +16,14 @@ class CreateLayananTable extends Migration
         Schema::create('layanan', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->string('alamat');
+            $table->time('Open_toko')->nullable();
+            $table->time('Close_toko')->nullable();
             $table->integer('kuota');
             $table->text('description');
             $table->string('picture');
             $table->integer('price');
+            $table->string('review')->nullable();
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');
             $table->timestamp('created_at')->useCurrent();

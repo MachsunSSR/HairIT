@@ -85,7 +85,7 @@
                                 <p class="card-title">{{ $item->name }}</p>
                             </div>
                             <div class="d-flex row justify-content-between align-items-center mb-1">
-                               <p class="card-title">{{ $item->description }}</p>
+                               <p>{{ $item->alamat }}</p>
                             </div>
                             <div class="d-flex">
                                 <form action="/add-to-cart/{{ Auth::user()->id }}/{{ $item->id }}" method="post">
@@ -93,6 +93,7 @@
                                     @method('post')
                                     <button class="btn btn-primary" type="submit">Add to cart</button>
                                 </form>
+                                    <a href="{{ route('layanan.show',$item->id) }}" type="submit" class="btn btn-primary">Detail Product</a>
                             </div>
                         </div>
                     </div>
