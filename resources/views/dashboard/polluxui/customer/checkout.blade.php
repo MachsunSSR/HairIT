@@ -90,8 +90,8 @@
                 </thead>
                 <tbody>
                     @forelse ($carts as $key => $item)
-                        <!-- <tr>
-                            <td class="text-center">{{ $key + 1 }}</td> -->
+                        <tr>
+                            <!-- <td class="text-center">{{ $key + 1 }}</td> -->
                             <!-- <td>
                                 <img src="{{ asset('images/' . $item->picture) }}"
                                     style="width: 235px; height: 150px; object-fit: cover; border-radius: 0%;"
@@ -120,18 +120,21 @@
                                         </button>
                                     </form>
                                 </div></td>
-                            <td class="text-center">
-                            <input type="Date" class="form-control" id="exampleInputPassword1" name="timeClose"></td>
-                            <td class="text-center">
-                            <input type="Time" class="form-control" id="exampleInputPassword1" name="timeClose"></td>
-                            
-                            <td class="text-right px-5"> <select>
-                                <option value="pil1">BCA</option>
-                                <option value="pil2">BRI</option>
-                                <option value="pil3">BNI</option>
-                            </select>
-                                <!-- <b class="card-title">Rp.{{ $item->price * $item->quantity }}</b> -->
-                            </td>
+                            <form action="/order" method="post" class="mt-2 px-5 py-3">
+                                 @csrf
+                                 @method('post')
+                                 <td>
+                                <input type="Date" class="form-control" id="exampleInputPassword1" name="tanggal"></td>
+                                <td class="text-center">
+                                <input type="Time" class="form-control" id="exampleInputPassword1" name="timeClose"></td>
+                                <td class="text-right px-5"> <select>
+                                    <option value="pil1">BCA</option>
+                                    <option value="pil2">BRI</option>
+                                    <option value="pil3">BNI</option>
+                                </select>
+                                    <!-- <b class="card-title">Rp.{{ $item->price * $item->quantity }}</b> -->
+                                </td>
+                            </form>
                         </tr>
                     @empty
                         <tr>
@@ -151,17 +154,40 @@
             <form action="/order" method="post" class="mt-2 px-5 py-3">
                 @csrf
                 @method('post')
-                <!-- <div class="row">
+                <div class="row">
                     <div class="form-group col-12">
                         <div class="col-sm">
-                            <label class="form-label"><h5>Order Address To :</h5> </label>
+                            <label class="form-label"><h5>Pilih Tanggal Booking :</h5> </label>
                         </div>
                         <div class="col-sm">
-                            <input type="text" class="form-control" name="order_address" placeholder="Your Home Address" required>
+                            <input type="date" class="form-control" name="Tanggal" placeholder="Your Home Address" required>
                         </div>
                     </div>
-                </div> -->
-
+                </div>
+                <div class="row">
+                    <div class="form-group col-12">
+                        <div class="col-sm">
+                            <label class="form-label"><h5>Pilih Jam Booking :</h5> </label>
+                        </div>
+                        <div class="col-sm">
+                            <input type="Time" class="form-control" name="Jam" placeholder="Your Home Address" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-12">
+                        <div class="col-sm">
+                            <label class="form-label"><h5>Pilih Jam Booking :</h5> </label>
+                        </div>
+                        <div class="col-sm">
+                            <select>
+                                    <option value="pil1">BCA</option>
+                                    <option value="pil2">BRI</option>
+                                    <option value="pil3">BNI</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
                 <div class="row mt-4">
                     <button class="btn btn-info btn-lg btn-block">
                         Order Now

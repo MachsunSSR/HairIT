@@ -12,5 +12,7 @@ class Order extends Model
     protected $fillable = [
         "order_address",
         "total_price",
+        "order_date",
+        "order_time"
     ];
 }

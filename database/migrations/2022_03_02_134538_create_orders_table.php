@@ -16,7 +16,9 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('order_address')->nullable();
-            $table->timestamp('order_date');
+            $table->date('order_date')->nullable();
+            $table->char('Metode_pembayaran')->nullable();
+            $table->time('order_time')->nullable();
             $table->BigInteger('total_price');
             // $table->timestamp('created_at')->useCurrent();
             // $table->timestamp('updated_at')->default(DB::raw('NULL ON UPDATE CURRENT_TIMESTAMP'))->nullable();

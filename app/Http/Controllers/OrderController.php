@@ -65,7 +65,13 @@ class OrderController extends Controller
 
         $order = Order::create([
             'order_address' => auth()->user()->alamat,
-            // $request->order_address,
+            // 'order_address' => $request->order_address,
+            'order_date' => $request->Tanggal,
+            'order_time' => $request->Jam,
+            'Metode_pembayaran' => $request->Pembayaran,
+            // $request->order_date,
+            // 'order_date' => tanggal,
+            // $request->ordered_at,
             'total_price' => $total
         ]);
         
@@ -83,7 +89,7 @@ class OrderController extends Controller
         UserOrder::create([
             'user_id' => auth()->user()->id,
             'order_id' => $order->id,
-            'ordered_at' => now()
+            'ordered_at' => $order->tanggal
         ]);
 
 
