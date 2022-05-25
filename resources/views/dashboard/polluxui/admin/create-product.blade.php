@@ -7,24 +7,24 @@ Create Product
 @section('content')
 @if (Auth::user()->role == 'admin')
 <br>
-<h3>Insert Layanan</h3>
+<h3>Masukan Data Salon</h3>
 <br>
 <div class="card mb-4">
     <div class="formcreate m-5">
         <form action="{{ url('layanan') }}" enctype="multipart/form-data" method="POST">
             @csrf
             <div class="mb-3">
-                <label>Nama Produk</label>
+                <label>Nama Salon</label>
                 <input type="text" class="form-control" id="exampleInputEmail1" name="name">
             </div>
             @error('name')
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
             <div class="mb-3">
-                <label>Masukkan Kategori Produk</label>
+                <label>Masukkan Kategori Layanan</label>
                 <br>
                 <select name="category_id">
-                    <option disabled>-- Pilih Kategori Produk --</option>
+                    <option disabled>-- Pilih Kategori Layanan --</option>
                     @foreach ($category as $item)
                     <option value="{{ $item->id }}">{{ $item->name }}</option>
                     @endforeach
@@ -34,28 +34,49 @@ Create Product
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
             <div class="mb-3">
-                <label>Stock</label>
+                <label>Kapasitas</label>
                 <input type="number" class="form-control" id="exampleInputPassword1" name="stock">
             </div>
             @error('stock')
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
             <div class="mb-3">
-                <label>Deskripsi Produk</label>
+                <label>Deskripsi Salon</label>
                 <input type="text" class="form-control" id="exampleInputPassword1" name="description">
+            </div>
+            @error('alamat')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+            <div class="mb-3">
+                <label>Alamat Salon</label>
+                <input type="text" class="form-control" id="exampleInputPassword1" name="alamat">
+            </div>
+            @error('Open_toko')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+             <div class="mb-3">
+                <label>Jam Buka</label>
+                <input type="time" class="form-control" id="exampleInputPassword1" name="timeOpen">
+            </div>
+            @error('Close_toko')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+             <div class="mb-3">
+                <label>Jam Tutup</label>
+                <input type="time" class="form-control" id="exampleInputPassword1" name="timeClose">
             </div>
             @error('description')
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
             <div class="mb-3">
-                <label>Gambar Produk</label>
+                <label>Gambar Salon</label>
                 <input type="file" class="form-control" id="exampleInputPassword1" name="picture">
             </div>
             @error('picture')
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
             <div class="mb-3">
-                <label>Harga Produk</label>
+                <label>Harga Layanan</label>
                 <input type="number" class="form-control" id="exampleInputPassword1" name="price">
             </div>
             @error('price')

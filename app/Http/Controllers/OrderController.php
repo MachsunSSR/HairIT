@@ -64,7 +64,7 @@ class OrderController extends Controller
         }
 
         $order = Order::create([
-            'order_address' => null,
+            'order_address' => auth()->user()->alamat,
             // $request->order_address,
             'total_price' => $total
         ]);

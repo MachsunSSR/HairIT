@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('jenis_kelamin')->nullable();
             $table->date('Tanggal_lahir')->nullable();
             $table->integer('nomer_telefon')->nullable();
+            $table->string('alamat')->nullable();
             $table->rememberToken();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->default(DB::raw('NULL ON UPDATE CURRENT_TIMESTAMP'))->nullable();
