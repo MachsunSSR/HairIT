@@ -88,7 +88,7 @@
                                <p>{{ $item->alamat }}</p>
                             </div>
                             <div class="d-flex">
-                                <form action="/add-to-cart/{{ Auth::user()->id }}/{{ $item->id }}" method="post">
+                                <form action="/checkout/{{ Auth::user()->id }}/{{ $item->id }}" method="post">
                                     @csrf
                                     @method('post')
                                     <button class="btn btn-primary" type="submit">Add to cart</button>

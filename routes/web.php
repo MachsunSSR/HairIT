@@ -54,12 +54,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/myorders', [CustomerController::class, 'order_index']);
 
     //Cart ( done )
-    Route::post('/add-to-cart/{user_id}/{layanan_id}', [CartController::class, 'addToCart']);
+    // Route::post('/add-to-cart/{user_id}/{layanan_id}', [CartController::class, 'addToCart']);
     Route::post('/subtract-quntity/{user_id}/{product_id}', [CartController::class, 'subtractCartItemQuantity']);
     Route::post('/add-quntity/{user_id}/{product_id}', [CartController::class, 'addCartItemQuantity']);
 
     //Order
-    Route::get('/checkout', [OrderController::class, 'index']);
+    Route::get('/checkout', [OrderController::class, 'index_view']);
+    Route::post('/checkout/{user_id}/{layanan_id}', [OrderController::class, 'index']);
     Route::get('/order', [OrderController::class, 'store']);
     Route::post('/order', [OrderController::class, 'store']);
 

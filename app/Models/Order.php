@@ -13,6 +13,8 @@ class Order extends Model
         "order_address",
         "total_price",
         "order_date",
-        "order_time"
+        "order_time",
+        "Metode_pembayaran",
+        "Type_Booking"
     ];
 }

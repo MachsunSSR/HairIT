@@ -24,6 +24,12 @@ class ProfileController extends Controller
     {
         $users = User::find($id);
         $users->name = $request->name;
+        $users->alamat = $request->alamat;
+        $users->nomer_telefon = $request->nomer_telefon;
+        $users->jenis_kelamin = $request->jenis_kelamin;
+        $users->Tanggal_lahir = $request->Tanggal_lahir;
+        $users->email = $request->email;
+        $users->foto = $request->$fileName;
         $users->save();
     }
 

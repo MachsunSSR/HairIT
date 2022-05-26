@@ -32,7 +32,6 @@ class CustomerController extends Controller
 
     public function order_index()
     {
-
         $carts = Cart::where('user_id', auth()->user()->id)
             ->join('cart_items', 'carts.id', '=', 'cart_items.cart_id')
             ->join('layanan', 'cart_items.layanan_id', '=', 'layanan.id')
@@ -55,7 +54,7 @@ class CustomerController extends Controller
             array_push($orderdetails, $orders);
             array_push($data, $customerOrders, $orderdetails, $carts);
         }
-        response()->json($data);
+        // response()->json($data);
 
         return view('dashboard.polluxui.customer.orders', compact('carts','customerOrders', 'orderdetails'));
     }
