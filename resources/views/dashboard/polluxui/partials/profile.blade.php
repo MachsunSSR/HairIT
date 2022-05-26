@@ -15,7 +15,6 @@
                     <form action="/profile/{{ Auth::user()->id }}" method="post" class="row mt-3">
                         @csrf
                         @method('patch')
-
                         <div class="col-md-12">
                             <label class="labels">Name</label>
                             <input type="text" class="form-control" placeholder="Name"

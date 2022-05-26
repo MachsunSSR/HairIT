@@ -11,23 +11,33 @@ class ProfileController extends Controller
     public function index($id)
     {
         $user = \Auth::user();
-
-        // dd($user, $profile);
         return view('dashboard.polluxui.partials.profile', compact('user'));
+    }
+
+    public function index_endpoint($id)
+    {
+        $user = User::findOrFail($id);
+        return response()->json($user);
+    }
+
+    public function update_endpoint(Request $request, $id)
+    {
+        $users = User::find($id);
+        $users->name = $request->name;
+        $users->save();
     }
 
     public function update(Request $request, $id)
     {
 
     $user = User::findOrFail($id);
-
-    if($request->has('foto'))
+    if($request->has('picture'))
         {
             $path = "images/";
             File::delete($path . $user->foto);
 
-            $fileName = time().'.'.$request->foto->extension();
-            $request->foto->move(public_path('images'), $fileName);
+            $fileName = time().'.'.$request->picture->extension();
+            $request->picture->move(public_path('images'), $fileName);
 
         $users = [
             'nomer_telefon' => $request->phone,
@@ -46,7 +56,7 @@ class ProfileController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'alamat' => $request->alamat,
-            'foto' => $request->foto,
+            'foto' => $request->picture,
         ];
     }
 

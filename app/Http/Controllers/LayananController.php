@@ -15,8 +15,13 @@ class LayananController extends Controller
     public function index()
     {
         $layanan = DB::table('layanan')->get()->all();
-
         return view('dashboard.polluxui.admin.index-product', compact('layanan'));
+    }
+
+    public function index_endpoint()
+    {
+        $layanan = DB::table('layanan')->get()->all();
+        return response()->json($layanan);
     }
 
     public function store(Request $request)
@@ -66,15 +71,18 @@ class LayananController extends Controller
 
     public function create(){
         $category = Category::all();
-
         return view ('dashboard.polluxui.admin.create-product', compact('category'));
     }
 
     public function edit($id){
         $category = Category::all();
         $layanan = Layanan::findorfail($id);
-
         return view('dashboard.polluxui.admin.edit-product', compact('layanan', 'category'));
+    }
+
+    public function show_endpoint($id){
+        $layanan = Layanan::findOrFail($id);
+        return response()->json($layanan);
     }
 
     public function show($id){
@@ -147,6 +155,7 @@ class LayananController extends Controller
 
         return redirect('/layanan');
     }
+    
 
     public function destroy(Request $request, $id)
     {

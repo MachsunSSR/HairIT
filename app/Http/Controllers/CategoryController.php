@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Cart;
+use App\Models\Layanan;
 
 class CategoryController extends Controller
 {
@@ -117,14 +118,19 @@ class CategoryController extends Controller
 
     public function showProductByCategory($category_id)
     {
-        $products = Category::find($category_id)->layanan;
+        $products = Layanan::where('category_id', $category_id)->first();
 
-        // dd($products);
+        dd($products);
         $carts = Cart::where('user_id', auth()->user()->id)
             ->join('cart_items', 'carts.id', '=', 'cart_items.cart_id')
             ->join('layanan', 'cart_items.layanan_id', '=', 'layanan.id')
             ->get();
 
         return view('dashboard.polluxui.customer.productsByCategory', compact('products', 'carts'));
+    }
+     public function showProductByCategory_endpoint($category_id)
+    {
+        $products = Layanan::where('category_id', $category_id)->first();
+        return response()->json($products);
     }
 }

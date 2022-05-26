@@ -65,7 +65,7 @@
                                                     </button>
                                                 </a>
 
-                                                <a href="/products/category/{{ $item->id }}">
+                                                <a href="/layanan/category/{{ $item->id }}">
                                                     <button type="button" class="btn btn-warning btn-icon-text mx-2">
                                                         <i class="typcn typcn-shopping-bag btn-icon-prepend"></i>
                                                         See Products

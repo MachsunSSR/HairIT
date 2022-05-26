@@ -8,7 +8,7 @@ use App\Models\Cart;
 use App\Models\Order;
 use App\Models\UserOrder;
 use App\Models\ProductOrder;
-
+use Dflydev\DotAccessData\Data;
 
 class CustomerController extends Controller
 {
@@ -24,6 +24,12 @@ class CustomerController extends Controller
         return view('dashboard.polluxui.customer.products', compact('products', 'carts'));
     }
 
+    public function index_endpoint()
+    {
+        $products = Layanan::all();
+        return response()->json($products);
+    }
+
     public function order_index()
     {
 
@@ -36,6 +42,7 @@ class CustomerController extends Controller
 
         $customerOrders = [];
         $orderdetails = [];
+        $data = [];
 
         foreach ($userorders as $key => $order) {
             $productOrders = ProductOrder::where('order_id', $order->order_id)
@@ -46,20 +53,9 @@ class CustomerController extends Controller
 
             array_push($customerOrders, $productOrders);
             array_push($orderdetails, $orders);
+            array_push($data, $customerOrders, $orderdetails, $carts);
         }
-        
-
-
-        // $userorders = UserOrder::where('user_id', auth()->user()->id)
-        //     ->join('orders', 'user_orders.order_id', '=', 'orders.id')
-        //     ->join('product_orders', 'orders.id', '=', 'product_orders.order_id')
-        //     ->join('products', 'product_orders.product_id', '=', 'products.id')
-        //     ->get();
-
-        // $orders = Order::where('user_id', auth()->user()->id)
-        //     ->join('product_orders', 'orders.id', '=', 'product_orders.order_id')
-        //     ->join('products', 'product_orders.product_id', '=', 'products.id')
-        //     ->get();
+        response()->json($data);
 
         return view('dashboard.polluxui.customer.orders', compact('carts','customerOrders', 'orderdetails'));
     }
