@@ -5,9 +5,10 @@ import {useFonts} from 'expo-font'
 
 import TabNavigator from './src/navigation/TabNavigator'
 
-import {TailwindProvider} from 'tailwind-rn';
-import utilities from './tailwind.json';
 import SplashScreen from './src/screens/SplashScreen';
+import Category from './src/screens/Category';
+import Detail from './src/screens/Detail';
+import Booking from './src/screens/Booking';
 
 const Stack = createStackNavigator()
 
@@ -44,14 +45,17 @@ const App = () => {
   if(!fontsLoaded) return null
 
   return (
-    <TailwindProvider utilities={utilities}>
+
       <NavigationContainer theme={theme}>
         <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName='SplashScreen'>
           <Stack.Screen name="SplashScreen" component={SplashScreen} />
           <Stack.Screen name="Home" component={TabNavigator} />
+          <Stack.Screen name="CategorySearch" component={Category} />
+          <Stack.Screen name="Detail" component={Detail} />
+          <Stack.Screen name="Booking" component={Booking} />
         </Stack.Navigator>
       </NavigationContainer>
-    </TailwindProvider>
+
   )
 }
 

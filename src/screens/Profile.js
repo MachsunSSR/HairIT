@@ -4,6 +4,8 @@ import { Text, SafeAreaView, View, ScrollView, Image, TouchableOpacity, StyleShe
 import {profileLinks} from '../data'
 import { Avatar } from '../../assets'
 
+import { Entypo } from '@expo/vector-icons'; 
+
 export default Profile = () => {
   return (
     <SafeAreaView style={{flex:1, padding: 20, paddingBottom: 60}}>
@@ -24,7 +26,7 @@ export default Profile = () => {
                           <Image source={link.icon} style={{marginRight: 10}}/>
                           <Text>{link.subtitle}</Text>
                         </View>
-                        <Text>{'>'}</Text>
+                        <Entypo name="chevron-small-right" size={20} color="black" />
                       </TouchableOpacity>
                   )
                 })}

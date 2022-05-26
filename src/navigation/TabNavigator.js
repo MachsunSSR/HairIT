@@ -6,6 +6,8 @@ import History from "../screens/History";
 import Profile from "../screens/Profile";
 import Search from "../screens/Search";
 
+import { Feather,FontAwesome,MaterialCommunityIcons  } from '@expo/vector-icons'; 
+
 const Tab = createBottomTabNavigator()
 
 export default TabNavigator = () => {
@@ -33,10 +35,43 @@ export default TabNavigator = () => {
       }}}
     
     >
-        <Tab.Screen name="Home" component={Home} />
-        <Tab.Screen name="Search" component={Search} />
-        <Tab.Screen name="History" component={History} />
-        <Tab.Screen name="Profile" component={Profile} />
+        <Tab.Screen 
+        name="Home" 
+        component={Home} 
+        options={{
+          tabBarIcon: ({color, size}) => (
+            <Feather name="home" size={size} color={color}/>
+          ),
+        }}
+        />
+        <Tab.Screen 
+        name="Search" 
+        component={Search} 
+        options={{
+          tabBarIcon: ({color, size}) => (
+            <Feather name="search" size={size} color={color} />
+          ),
+        }}
+        />
+        <Tab.Screen 
+        name="History" 
+        component={History} 
+        options={{
+          tabBarIcon: ({color, size}) => (
+            <MaterialCommunityIcons name="clock-outline" size={size} color={color} />
+          ),
+        }}
+        />
+        
+        <Tab.Screen 
+        name="Profile" 
+        component={Profile} 
+        options={{
+          tabBarIcon: ({color, size}) => (
+            <FontAwesome name="user-o" size={size} color={color} />
+          ),
+        }}
+        />
     </Tab.Navigator>
     )
 }

@@ -1,12 +1,14 @@
 import React from 'react'
 import { Text, SafeAreaView, ScrollView, Image, View, StyleSheet, TextInput, Dimensions, TouchableOpacity } from 'react-native'
-import Carousel from 'react-native-snap-carousel';
+// import Carousel from 'react-native-snap-carousel';
 
 import {Logo} from '../../assets'
 import {bannerData, homeCategory, recommendationData} from '../data/'
 import Banner from '../components/Banner'
 import HomeCategory from '../components/HomeCategory';
 import HomeRecomCards from '../components/HomeRecomCards'
+
+import { AntDesign, MaterialCommunityIcons, Feather } from '@expo/vector-icons'; 
 
 const Home = () => {
 
@@ -24,9 +26,9 @@ const Home = () => {
             <Text>Hair-IT</Text>
           </View>
           <View style={styles.headerButtons}>
-            <Text>Icon 1</Text>
-            <Text style={{paddingHorizontal: 10}}>Icon 2</Text>
-            <Text>Icon 3</Text>
+            <AntDesign name="bells" size={18} color="black" />
+            <Feather name="bookmark" size={18} color="black" style={{paddingHorizontal: 10}}  />
+            <MaterialCommunityIcons name="comment-processing-outline" size={18} color="black" />
           </View>
         </View>
 
@@ -38,18 +40,18 @@ const Home = () => {
 
         {/* ============================= BANNER CAROUSEL ============================= */}
         <View style={{marginVertical: 10}}>
-          <Carousel 
+          {/* <Carousel 
             ref={(c) => { this._carousel = c; }}
             data={bannerData}
             renderItem={renderBanner}
             sliderWidth={Dimensions.get('window').width - 40}
             itemWidth={278}
-          />
+          /> */}
         </View>
 
         {/* ============================= SEARCH BAR ============================= */}
         <View style={styles.searchView}>
-          <Text style={{marginRight: 10}}>LOGO</Text>
+          <AntDesign name="search1" size={20} color="#6C5DD2" style={{marginRight: 8}} />
           <TextInput placeholder='Search for location, salon, or service' placeholderTextColor="#6C5DD2"  style={{fontSize: 10, color: "#6C5DD2"}}></TextInput>
         </View>
 
