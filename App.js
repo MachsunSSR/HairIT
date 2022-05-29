@@ -3,13 +3,18 @@ import {NavigationContainer, DefaultTheme} from '@react-navigation/native'
 
 import {useFonts} from 'expo-font'
 
-import Home from './src/screens/Home'
-import Search from './src/screens/Search'
-import History from './src/screens/History'
-import Profile from './src/screens/Profile'
+import TabNavigator from './src/navigation/TabNavigator'
 
-import {TailwindProvider} from 'tailwind-rn';
-import utilities from './tailwind.json';
+import SplashScreen from './src/screens/SplashScreen';
+import Category from './src/screens/Category';
+import Detail from './src/screens/Detail';
+import Booking from './src/screens/Booking';
+import Payment from './src/screens/Payment';
+import Transaction from './src/screens/Transaction';
+import Ticket from './src/screens/Ticket';
+import Bookmark from './src/screens/Bookmark';
+import Messages from './src/screens/Messages';
+import Notification from './src/screens/Notification';
 
 const Stack = createStackNavigator()
 
@@ -46,16 +51,23 @@ const App = () => {
   if(!fontsLoaded) return null
 
   return (
-    <TailwindProvider utilities={utilities}>
+
       <NavigationContainer theme={theme}>
-        <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName='Home'>
-          <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name="Search" component={Search} />
-          <Stack.Screen name="History" component={History} />
-          <Stack.Screen name="Profile" component={Profile} />
+        <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName='SplashScreen'>
+          <Stack.Screen name="SplashScreen" component={SplashScreen} />
+          <Stack.Screen name="Home" component={TabNavigator}/>
+          <Stack.Screen name="CategorySearch" component={Category}  options={{ headerShown: true }}  />
+          <Stack.Screen name="Detail" component={Detail} />
+          <Stack.Screen name="Booking" component={Booking} options={{ headerShown: true }} />
+          <Stack.Screen name="Payment" component={Payment} options={{ headerShown: true }}  />
+          <Stack.Screen name="Transaction" component={Transaction} options={{ headerShown: true }}  />
+          <Stack.Screen name="Ticket" component={Ticket} options={{ headerShown: true }}  />
+          <Stack.Screen name="Bookmark" component={Bookmark} options={{ headerShown: true }}  />
+          <Stack.Screen name="Notification" component={Notification} options={{ headerShown: true }}  />
+          <Stack.Screen name="Messages" component={Messages} options={{ headerShown: true }}  />
         </Stack.Navigator>
       </NavigationContainer>
-    </TailwindProvider>
+
   )
 }
 
