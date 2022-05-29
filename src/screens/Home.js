@@ -1,6 +1,7 @@
 import React from 'react'
 import { Text, SafeAreaView, ScrollView, Image, View, StyleSheet, TextInput, Dimensions, TouchableOpacity } from 'react-native'
-// import Carousel from 'react-native-snap-carousel';
+import PropTypes from 'prop-types'; 
+import Carousel from 'react-native-snap-carousel';
 
 import {Logo} from '../../assets'
 import {bannerData, homeCategory, recommendationData} from '../data/'
@@ -10,94 +11,96 @@ import HomeRecomCards from '../components/HomeRecomCards'
 
 import { AntDesign, MaterialCommunityIcons, Feather } from '@expo/vector-icons'; 
 
-const Home = () => {
+const Home = ({navigation}) => {
 
   const renderBanner = ({item, index}) => {
     return <Banner data={item} />;
   };
 
   return (
-    <SafeAreaView style={{flex:1, margin: 20, marginBottom: 70}}>
+    <SafeAreaView style={{flex:1}}>
       <ScrollView >
-        {/* ============================= HEADER ============================= */}
-        <View style={styles.header}>
-          <View style={styles.headerLogo}>
-            <Image source={Logo} style={{width: 39, height: 39, marginRight: 10}}></Image>
-            <Text>Hair-IT</Text>
+        <View style={{margin: 20, marginBottom: 70, marginTop: 50}}>
+          {/* ============================= HEADER ============================= */}
+          <View style={styles.header}>
+            <View style={styles.headerLogo}>
+              <Image source={Logo} style={{width: 39, height: 39, marginRight: 10}}></Image>
+              <Text>Hair-IT</Text>
+            </View>
+            <View style={styles.headerButtons}>
+              <TouchableOpacity onPress={() => navigation.navigate('Notification')}><AntDesign name="bells" size={22} color="black"  /></TouchableOpacity>
+              <TouchableOpacity onPress={() => navigation.navigate('Bookmark')} style={{paddingHorizontal: 10}}><Feather name="bookmark" size={22} color="black"  /></TouchableOpacity>
+              <TouchableOpacity onPress={() => navigation.navigate('Messages')}><MaterialCommunityIcons name="comment-processing-outline" size={22} color="black"  /></TouchableOpacity>
+            </View>
           </View>
-          <View style={styles.headerButtons}>
-            <AntDesign name="bells" size={18} color="black" />
-            <Feather name="bookmark" size={18} color="black" style={{paddingHorizontal: 10}}  />
-            <MaterialCommunityIcons name="comment-processing-outline" size={18} color="black" />
+
+          {/* ============================= GREETINGS ============================= */}
+          <View style={{marginVertical: 10}}>
+            <Text style={{fontWeight: 'bold', fontSize: 30}}>Hello Ana!</Text>
+            <Text style={{color:'#9E9E9E'}}>Get the style started with your hair!</Text>
           </View>
-        </View>
 
-        {/* ============================= GREETINGS ============================= */}
-        <View style={{marginVertical: 10}}>
-          <Text style={{fontWeight: 'bold', fontSize: 30}}>Hello Ana!</Text>
-          <Text style={{color:'#9E9E9E'}}>Get the style started with your hair!</Text>
-        </View>
+          {/* ============================= BANNER CAROUSEL ============================= */}
+          <View style={{marginVertical: 10}}>
+            <Carousel 
+              ref={(c) => { this._carousel = c; }}
+              data={bannerData}
+              renderItem={renderBanner}
+              sliderWidth={Dimensions.get('window').width - 40}
+              itemWidth={278}
+            />
+          </View>
 
-        {/* ============================= BANNER CAROUSEL ============================= */}
-        <View style={{marginVertical: 10}}>
-          {/* <Carousel 
-            ref={(c) => { this._carousel = c; }}
-            data={bannerData}
-            renderItem={renderBanner}
-            sliderWidth={Dimensions.get('window').width - 40}
-            itemWidth={278}
-          /> */}
-        </View>
+          {/* ============================= SEARCH BAR ============================= */}
+          <View style={styles.searchView}>
+            <AntDesign name="search1" size={20} color="#6C5DD2" style={{marginRight: 8}} />
+            <TextInput placeholder='Search for location, salon, or service' placeholderTextColor="#6C5DD2"  style={{fontSize: 10, color: "#6C5DD2"}}></TextInput>
+          </View>
 
-        {/* ============================= SEARCH BAR ============================= */}
-        <View style={styles.searchView}>
-          <AntDesign name="search1" size={20} color="#6C5DD2" style={{marginRight: 8}} />
-          <TextInput placeholder='Search for location, salon, or service' placeholderTextColor="#6C5DD2"  style={{fontSize: 10, color: "#6C5DD2"}}></TextInput>
-        </View>
+          {/* ============================= CATEGORIES ============================= */}
+            <View style={styles.categoryView}>
+              <Text style={{fontSize: 16, fontWeight: 'bold'}}>
+                Categories
+              </Text>
+              <View style={styles.categories}>
+                {homeCategory.map((data,index) => {
+                  return <HomeCategory key={index} data={data} />
+                })}
+              </View>
+            </View>
 
-        {/* ============================= CATEGORIES ============================= */}
-          <View style={styles.categoryView}>
-            <Text style={{fontSize: 16, fontWeight: 'bold'}}>
-              Categories
-            </Text>
-            <View style={styles.categories}>
-              {homeCategory.map((data,index) => {
-                return <HomeCategory key={index} data={data} />
+          {/* ============================= RECOMMENDATION ============================= */}
+          <View style={styles.recommendationView}>
+            <View style={styles.recommendationTitle}>
+              <Text style={{fontSize: 16, fontWeight: 'bold'}}>
+                Recommendation for you
+              </Text>
+              <TouchableOpacity onPress={() => {}}>
+                <Text style={{color: '#6C5DD2'}}>See all</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.recommendationCards}>
+              {recommendationData.map((data,index) => {
+                return <HomeRecomCards key={index} data={data} />
               })}
             </View>
           </View>
 
-        {/* ============================= RECOMMENDATION ============================= */}
-        <View style={styles.recommendationView}>
-          <View style={styles.recommendationTitle}>
-            <Text style={{fontSize: 16, fontWeight: 'bold'}}>
-              Recommendation for you
-            </Text>
-            <TouchableOpacity onPress={() => {}}>
-              <Text style={{color: '#6C5DD2'}}>See all</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.recommendationCards}>
-            {recommendationData.map((data,index) => {
-              return <HomeRecomCards key={index} data={data} />
-            })}
-          </View>
-        </View>
-
-        {/* ============================= Trending Shortlets ============================= */}
-        <View style={styles.recommendationView}>
-          <View style={styles.recommendationTitle}>
-            <Text style={{fontSize: 16, fontWeight: 'bold'}}>
-              Trending Shortlets
-            </Text>
-            <TouchableOpacity onPress={() => {}}>
-              <Text style={{color: '#6C5DD2'}}>See all</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.recommendationCards}>
-            {recommendationData.map((data,index) => {
-              return <HomeRecomCards key={index} data={data} />
-            })}
+          {/* ============================= Trending Shortlets ============================= */}
+          <View style={styles.recommendationView}>
+            <View style={styles.recommendationTitle}>
+              <Text style={{fontSize: 16, fontWeight: 'bold'}}>
+                Trending Shortlets
+              </Text>
+              <TouchableOpacity onPress={() => {}}>
+                <Text style={{color: '#6C5DD2'}}>See all</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.recommendationCards}>
+              {recommendationData.map((data,index) => {
+                return <HomeRecomCards key={index} data={data} />
+              })}
+            </View>
           </View>
         </View>
       </ScrollView>

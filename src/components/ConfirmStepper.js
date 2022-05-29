@@ -3,21 +3,29 @@ import React from 'react'
 
 export default function ConfirmStepper() {
 
-    const list = [
-        ['', '', '', '']
-        ['', '']
-        ['', '']
-    ]
+    const data = {
+        image: require('../../assets/images/gambar_salon.png'),
+        titleSalon: 'Shinjuku Hair Make',
+        addressSalon: 'Jl. Niaga Gapura, Lontar, Kec. Sambikerep, Kota Surabaya, Jawa Timur',
+        bookingType: 'Book a Visit',
+        time: '10 August 2022, 2 PM',
+        services: 'Hair Coloring + Creambat',
+        guest: '2',
+        userAddress: 'Garden Dian Regency Jl Edelweis',
+        phone: '08113552304',
+        bill: 'Rp 250.000',
+        total: 'Rp 250.000',
+    }
     
 
     return (
         <ScrollView>
             {/* ===================================== Card ===================================== */}
             <View style={styles.cardContainer}>
-                <Image source={data.image} style={{width: 100, borderRadius: 15}}/>
+                <Image source={data.image} style={{width: 100, borderRadius: 15, marginRight: 15}}/>
                 <View>
                     <Text style={{fontSize: 14, fontWeight: '700', marginBottom: 5}}>{data.titleSalon}</Text>
-                    <Text style={{fontWeight: '600', color: '#9E9E9E'}}>{data.addressSalon}</Text>
+                    <Text style={{fontWeight: '600', color: '#9E9E9E', width: 180}}>{data.addressSalon}</Text>
                 </View>
             </View>
             <View style={styles.linedContainer}>
@@ -77,18 +85,18 @@ const styles = StyleSheet.create({
         borderRadius: 12,
         marginVertical: 10,
         padding: 20,
+        height: 118,
         flexDirection: 'row',
-        justifyContent: 'space-between',
         alignItems: 'center',
     },
     betweenContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        marginVertical: 5,
+        marginVertical: 8,
     },
     linedContainer: {
-        marginVertical: 5,
+        marginVertical: 10,
         borderBottomWidth: 2,
         borderStyle: 'dashed',
         borderColor: '#9E9E9E',

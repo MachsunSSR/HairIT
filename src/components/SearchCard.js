@@ -1,17 +1,41 @@
-import { View, Text, StyleSheet, Image } from 'react-native'
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 
+import { Feather, MaterialIcons } from '@expo/vector-icons'; 
+import { useNavigation } from '@react-navigation/native';
+
 const SearchCard = ({data}) => {
+    const navigation = useNavigation(); 
+    const [isFav, setIsFav] = React.useState(data.isBookmarked);
+
+    const handleFav = () => {
+        setIsFav(!isFav);
+    }
+
+    const handleStar = (rating) => {
+        let star = [];
+        for(let i = 0; i < Math.floor(rating); i++) {
+            star.push(<MaterialIcons key={i} name='star' style={{marginRight: 1}} size={10} color='#6C5DD2' />)
+        }
+        for(let i = 0; i < 5 - rating; i++) {
+            star.push(<MaterialIcons key={i+rating} name='star' style={{marginRight: 1}} size={10} color='#D3CEF1' />)
+        }
+        return star;
+    }
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={() => navigation.navigate('Detail')}>
         <Image source={data.image} style={styles.image} />
         <View style={styles.textContainer}>
             <Text style={styles.title}>{data.title}</Text>
             <Text style={styles.address}>{data.address}</Text>
-            <Text style={styles.rating}>⭐⭐⭐⭐⭐{`(${data.rating})`}</Text>
+            <Text style={styles.rating}>{handleStar(data.rating)}</Text>
         </View>
-        <Text style={styles.bookmark}>{data.isBookmarked? 'diBM' : 'blmBM'}</Text>
-    </View>
+        <TouchableOpacity onPress={handleFav}>
+                        {isFav? 
+                        <MaterialIcons name="bookmark" size={16} color="#6C5DD2" /> : 
+                        <Feather name="bookmark" size={16} color="black" />}
+        </TouchableOpacity>
+    </TouchableOpacity>
   )
 }
 

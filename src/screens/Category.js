@@ -3,17 +3,14 @@ import { SafeAreaView, TouchableOpacity, View, StyleSheet, Text, TextInput } fro
 import {recommendationData} from '../data/'
 import SearchCard from '../components/SearchCard'
 
+import { AntDesign } from '@expo/vector-icons'; 
+
 export default function Category() {
     return (
         <SafeAreaView style={{paddingHorizontal: 20}}>
-            <View>
-                <TouchableOpacity>
-                    <Text>Icon</Text>
-                </TouchableOpacity>
-                <Text>Category</Text>
-            </View>
+            
             <View style={styles.searchView}>
-                <Text style={{marginRight: 10}}>LOGO</Text>
+                <AntDesign name="search1" size={20} color="#6C5DD2" style={{marginRight: 8}} />
                 <TextInput placeholder='Search here' placeholderTextColor="#6C5DD2"  style={{fontSize: 10, color: "#6C5DD2"}}></TextInput>
             </View>
             <View>

@@ -23,7 +23,8 @@ export default Profile = () => {
                   return(
                       <TouchableOpacity style={link.line? style.linedView : style.unlinedView} key={index2}>
                         <View style={{flexDirection: 'row', alignItems:'center', justifyContent: 'center'}}>
-                          <Image source={link.icon} style={{marginRight: 10}}/>
+                          <View style={{ marginRight: 10}}>{link.icon}</View>
+                
                           <Text>{link.subtitle}</Text>
                         </View>
                         <Entypo name="chevron-small-right" size={20} color="black" />
@@ -47,7 +48,7 @@ const style = StyleSheet.create({
     alignItems: 'center',
     marginHorizontal: 20,
     borderBottomColor: '#9E9E9E', 
-    paddingVertical: 10,
+    paddingVertical: 15,
     borderBottomWidth: 0.5,
     
   },

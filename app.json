@@ -1,11 +1,19 @@
 {
   "expo": {
-    "name": "MyReactNative",
-    "slug": "MyReactNative",
+    "name": "Hair-IT",
+    "slug": "hair-it",
+    "description": "Aplikasi salon",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.bccunion.hairit"
+    },
+    "android": {
+      "package": "com.bccunion.hairit"
+    }
   },
   "name": "MyReactNative"
 }

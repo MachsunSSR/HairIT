@@ -1,25 +1,25 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import { View, Text, TouchableOpacity, Image, StyleSheet, ScrollView } from 'react-native'
+import React, {useState} from 'react'
 
 export default function PaymentStepper() {
-    const [dataPayment, setDataPayment] = [
+    const [dataPayment, setDataPayment] = useState([
         {
             title: 'Digital Payment',
             payments: [
                 {
                     name: 'Ovo',
                     isClicked: true,
-                    logo: 'ovo.png',
+                    logo: require('../../assets/images/ovo.png'),
                 },
                 {
                     name: 'Dana',
                     isClicked: false,
-                    logo: 'dana.png',
+                    logo: require('../../assets/images/dana.png'),
                 },
                 {
                     name: 'Gopay',
                     isClicked: false,
-                    logo: 'gopay.png',
+                    logo: require('../../assets/images/gopay.png'),
                 },
             ]
         },
@@ -29,21 +29,21 @@ export default function PaymentStepper() {
                 {
                     name: 'Bca',
                     isClicked: false,
-                    logo: 'bca.png',
+                    logo: require('../../assets/images/bca.png'),
                 },
-                {
-                    name: 'Bni',
-                    isClicked: false,
-                    logo: 'bni.png',
-                },
-                {
-                    name: 'Mandiri',
-                    isClicked: false,
-                    logo: 'mandiri.png',
-                },
+                // {
+                //     name: 'Bni',
+                //     isClicked: false,
+                //     logo: require('../../assets/images/bni.png'),
+                // },
+                // {
+                //     name: 'Mandiri',
+                //     isClicked: false,
+                //     logo: require('../../assets/images/mandiri.png'),
+                // },
             ]
         },
-    ]
+    ])
     
     const handleClick = (index, itemIndex) => {
         const newData = [...dataPayment];
@@ -56,25 +56,25 @@ export default function PaymentStepper() {
         setDataPayment(newData);
     }
     return (
-        <View style={{flex: 1, paddingHorizontal: 20, marginVertical: 20}}>
-            {dataPayment.map((item, index) => {
+        <ScrollView style={{flex: 1, paddingHorizontal: 20, marginVertical: 20}}>
+            {dataPayment?.map((item, index) => {
                 return (
-                    <View style={{marginVertical: 10}}>
-                        <Text style={{fontSize: 14, fontWeight: '600'}}>{item.title}</Text>
+                    <View style={{marginVertical: 10}} key={index}>
+                        <Text style={{fontSize: 18, fontWeight: '700', marginBottom: 10}}>{item.title}</Text>
                         {item.payments.map((itemPayment, indexPayment) => {
                             return (
-                                <View style={styles.container}>
-                                    <Image source={itemPayment.logo} style={{height: 20}}/>
-                                    <ToucableOpacity style={styles.buttonOutline} onPress={() => handleClick(index, indexPayment)}>
-                                        <View style={itemPayment.isClicked ? buttonClicked : buttonUnclicked}></View>
-                                    </ToucableOpacity>
-                                </View>
+                                <TouchableOpacity key={indexPayment} style={styles.container} onPress={() => handleClick(index, indexPayment)}>
+                                    <Image source={itemPayment.logo} style={{resizeMode: 'contain', width: 80}}/>
+                                    <View style={styles.buttonOutline} >
+                                        <View style={itemPayment.isClicked === true? styles.buttonClicked : styles.buttonUnclicked}></View>
+                                    </View>
+                                </TouchableOpacity>
                             )
                         })}
-                    </View>
+                    </View> 
                 )
             })}
-        </View>
+        </ScrollView>
     )
 }
 
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        paddingVertical: 10,
+        paddingVertical: 5,
         shadowColor: '#000',
         shadowOffset: { width: 2, height: 2 },
         shadowOpacity: 0.8,
@@ -92,20 +92,29 @@ const styles = StyleSheet.create({
         borderRadius: 12,
         backgroundColor: '#fff',
         marginBottom: 10,
+        paddingHorizontal: 30,
     },
     buttonOutline: {
         borderRadius: 100, 
         borderWidth: 3, 
         borderColor: '#6C5DD2', 
-        padding: 3
+        padding: 10,
+        width: 30,
+        height: 30,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     buttonClicked: {
         borderRadius: 100,
         backgroundColor: '#6C5DD2',
+        width: 15,
+        height: 15,
     },
 
     buttonUnclicked: {
         borderRadius: 100,
         backgroundColor: '#fff',
+        width: 15,
+        height: 15,
     }
 })

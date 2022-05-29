@@ -5,33 +5,29 @@ import Stepper from 'react-native-stepper-ui';
 
 import BookingStepper from '../components/BookingStepper';
 import ScheduleStepper from '../components/ScheduleStepper';
+import ConfirmStepper from '../components/ConfirmStepper';
+import PaymentStepper from '../components/PaymentStepper';
 
-const MyComponent = (props) => {
-    return (
-        <View>
-            <Text>{props.title}</Text>
-        </View>
-    );
-};
 
 const content = [
-    <BookingStepper />,
+    <BookingStepper />, 
     <ScheduleStepper />,
-    <MyComponent title="Component 3" />,
+    <ConfirmStepper />,
+    <PaymentStepper />,
 ];
 
 
 
-const Booking = () => {
+const Booking = ({navigation}) => {
     const [active, setActive] = useState(0); 
 
     return (
-        <View style={{ marginVertical: 80, marginHorizontal: 20 }}>
+        <View style={{ marginHorizontal: 20 }}>
         <Stepper
             active={active}
             content={content}
             onBack={() => setActive((p) => p - 1)}
-            onFinish={() => alert('Finish')}
+            onFinish={() => navigation.navigate('Payment')}
             onNext={() => setActive((p) => p + 1)}
             buttonStyle={{
                 backgroundColor: '#6C5DD2',

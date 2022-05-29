@@ -6,7 +6,7 @@ import SearchCard from '../components/SearchCard'
 const Search = ({data}) => {
   return (
     <SafeAreaView>
-      <View>
+      {/* <View>
         <TouchableOpacity>
           Icon
         </TouchableOpacity>
@@ -20,7 +20,7 @@ const Search = ({data}) => {
         {recommendationData.map((data,index) => {
           return <SearchCard key={index} data={data} />
         })}
-      </View>
+      </View> */}
     </SafeAreaView>
   )
 }

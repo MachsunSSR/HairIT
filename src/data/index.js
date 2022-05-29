@@ -1,3 +1,5 @@
+import { FontAwesome, Ionicons, AntDesign  } from '@expo/vector-icons'; 
+
 export const bannerData = [
     {
         title: 'First Banner',
@@ -35,7 +37,7 @@ export const homeCategory = [
 export const recommendationData = [
     {
         image: require('../../assets/images/gambar_salon.png'),
-        title: "Norak Salon",
+        title: "Nora Salon",
         isBookmarked: false,
         rating: 4.5,
         address: "Jl. Raya Cikarang Barat No.1, Cikarang Barat, Kota Bandung, Jawa Barat 40282",
@@ -44,46 +46,39 @@ export const recommendationData = [
         facilities: ["Wifi", "Parkir", "Kasur", "Meja", "Hair Coloring", "Hair Cutting", "Hair Styling"],
         reviews: [
             {
-                name: "Selatan Selingkuh Waduh",
+                name: "Safir Rahmahuda",
                 image: require('../../assets/images/avatar.png'),
                 rating: 4.5,
                 date: 'Apr 20, 2022',
-                review: 'Layanan sangat bagus, pegawai sangat ramah dan hasil memuaskan. Thank you Shinjuku!'
+                review: 'Thank you Shinjuku!'
             },
             {
-                name: "Ruby Tersesat Dosa",
+                name: "Anatasia Griselda",
                 image: require('../../assets/images/avatar.png'),
                 rating: 5,
                 date: 'Apr 20, 2022',
-                review: 'Bagus sekali hasilnya, saya request model dari tampilan filter aplikasi dan hasilnya pun sama, tidak mengecewakan 🤙🤙'
+                review: 'Tampilan filter aplikasi dan hasilnya pun sama, tidak mengecewakan 🤙🤙'
             },
             {
-                name: "Selatan Selingkuh Waduh",
+                name: "Utara Setya",
                 image: require('../../assets/images/avatar.png'),
                 rating: 4.5,
                 date: 'Apr 20, 2022',
-                review: 'Layanan sangat bagus, pegawai sangat ramah dan hasil memuaskan. Thank you Shinjuku!'
+                review: 'Layanan sangat bagus'
             },
             {
-                name: "Ruby Tersesat Dosa",
+                name: "Bagus Sedya",
                 image: require('../../assets/images/avatar.png'),
                 rating: 5,
                 date: 'Apr 20, 2022',
-                review: 'Bagus sekali hasilnya, saya request model dari tampilan filter aplikasi dan hasilnya pun sama, tidak mengecewakan 🤙🤙'
+                review: 'Bagus sekali hasilnya'
             },
             {
-                name: "Selatan Selingkuh Waduh",
+                name: "Tika Ayu",
                 image: require('../../assets/images/avatar.png'),
                 rating: 4.5,
                 date: 'Apr 20, 2022',
-                review: 'Layanan sangat bagus, pegawai sangat ramah dan hasil memuaskan. Thank you Shinjuku!'
-            },
-            {
-                name: "Ruby Tersesat Dosa",
-                image: require('../../assets/images/avatar.png'),
-                rating: 5,
-                date: 'Apr 20, 2022',
-                review: 'Bagus sekali hasilnya, saya request model dari tampilan filter aplikasi dan hasilnya pun sama, tidak mengecewakan 🤙🤙'
+                review: 'Pegawai sangat ramah dan hasil memuaskan. Thank you Shinjuku!'
             },
         ]
     },
@@ -104,13 +99,13 @@ export const profileLinks = [
         title: 'Account',
         links: [
             {
-                icon: require('../../assets/images/haircut.png'),
+                icon: <FontAwesome name="user" size={24} color="black" />,
                 subtitle: 'Edit Profile',
                 link: '',
                 line: true,
             },
             {
-                icon: require('../../assets/images/haircut.png'),
+                icon: <FontAwesome name="credit-card-alt" size={20} color="black" />,
                 subtitle: 'Bank Information',
                 link: '',
                 line: false,
@@ -121,7 +116,7 @@ export const profileLinks = [
         title: 'Security',
         links: [
             {
-                icon: require('../../assets/images/haircut.png'),
+                icon: <FontAwesome name="lock" size={24} color="black" />,
                 subtitle: 'Change Password',
                 link: '',
                 line: false,
@@ -132,19 +127,19 @@ export const profileLinks = [
         title: 'Others',
         links: [
             {
-                icon: require('../../assets/images/haircut.png'),
+                icon: <Ionicons name="settings-sharp" size={22} color="black" />,
                 subtitle: 'Setting',
                 link: '',
                 line: true,
             },
             {
-                icon: require('../../assets/images/haircut.png'),
+                icon: <FontAwesome name="question" size={24} color="black" />,
                 subtitle: 'About Hair-IT',
                 link: '',
                 line: true,
             },
             {
-                icon: require('../../assets/images/haircut.png'),
+                icon: <AntDesign name="customerservice" size={22} color="black" />,
                 subtitle: 'Help Center',
                 link: '',
                 line: false,
@@ -156,7 +151,7 @@ export const profileLinks = [
 export const historyData = [
     {
         image: require('../../assets/images/gambar_salon.png'),
-        title: "Norak Salon",
+        title: "Nora Salon",
         address: "Jl. Raya Cikarang Barat No.1, Cikarang Barat, Kota Bandung, Jawa Barat 40282",
         schedule: 'Sun 15.00 PM - 17.00 PM'
     },

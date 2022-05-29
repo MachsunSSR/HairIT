@@ -1,6 +1,8 @@
 import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native'
 import React from 'react'
 
+import { MaterialIcons, Feather } from '@expo/vector-icons'; 
+
 export default function HistoryCard({data}) {
   return (
     <View style={styles.container}>
@@ -8,12 +10,12 @@ export default function HistoryCard({data}) {
             <Image source={data.image} style={{width: 100, height: 80, borderRadius: 10, marginRight: 20}}/>
             <View style={{flex: 1}}>
                 <Text style={{fontSize: 16, fontWeight: '600', marginBottom: 5}}>{data.title}</Text>
-                <View style={{flexDirection: 'row', flex: 1}}>
-                    <Text style={{marginRight: 3}}>Map</Text>
+                <View style={{flexDirection: 'row', flex: 1, alignItems: 'center'}}>
+                <Feather name="map-pin" size={20} color="#6C5DD2" style={{marginRight: 10}} />
                     <Text style={{fontSize: 10, fontWeight: '500', color: '#9E9E9E'}}>{data.address.slice(0, 60)}</Text>
                 </View>
-                <View style={{flexDirection: 'row'}}>
-                    <Text style={{marginRight: 3}}>Jam</Text>
+                <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                    <Feather name="clock" size={20} color="#6C5DD2" style={{marginRight: 10}} />
                     <Text style={{fontSize: 10, fontWeight: '500', color: '#9E9E9E'}}>{data.schedule}</Text>
                 </View>
             </View>
